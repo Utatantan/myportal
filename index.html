@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portal Site</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .article-list {
+            list-style: none;
+            padding: 0;
+        }
+        .article-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .article-item:last-child {
+            border-bottom: none;
+        }
+        .article-title {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .article-title:hover {
+            color: #3498db;
+        }
+        .article-meta {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Portal Site</h1>
+        <ul class="article-list" id="articleList">
+            <!-- 記事リストはJavaScriptで動的に生成 -->
+        </ul>
+    </div>
+
+    <script>
+        // data/items.jsonからデータを読み込んで表示
+        fetch('data/items.json')
+            .then(response => response.json())
+            .then(data => {
+                const articleList = document.getElementById('articleList');
+                data.items.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = 'article-item';
+                    
+                    const date = `${item.year}/${item.month}/${item.date}`;
+                    
+                    li.innerHTML = `
+                        <a href="${item.url}" class="article-title" target="_blank">
+                            ${item.title}
+                        </a>
+                        <div class="article-meta">
+                            ${date} | ${item.tags.join(', ')}
+                        </div>
+                    `;
+                    
+                    articleList.appendChild(li);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading articles:', error);
+                document.getElementById('articleList').innerHTML = 
+                    '<li class="article-item">記事の読み込みに失敗しました。</li>';
+            });
+    </script>
+</body>
+</html> 
