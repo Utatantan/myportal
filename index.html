@@ -61,7 +61,7 @@
 
     <script>
         // data/items.jsonからデータを読み込んで表示
-        fetch('data/items.json')
+        fetch('../data/items.json')
             .then(response => response.json())
             .then(data => {
                 const articleList = document.getElementById('articleList');
