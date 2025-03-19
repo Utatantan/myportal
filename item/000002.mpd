@@ -1,0 +1,8 @@
+title: "GitHubとGitHub Actionsの使い方"
+url: "https://example.com/posts/github-actions"
+tags:
+  - GitHub
+  - CI/CD
+  - 自動化
+updated_at: "2023-06-15T10:30:00Z"
+description: "GitHubとGitHub Actionsを使った効率的な開発ワークフローについての解説記事"
