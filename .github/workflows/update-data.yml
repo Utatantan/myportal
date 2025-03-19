@@ -1,11 +1,8 @@
 name: Update Portal Data
 
 on:
-  push:
-    branches: [ main ]
-    paths:
-      - 'item/**.mpd'
-  workflow_dispatch:
+  push: # push されたときに実行
+  workflow_dispatch: # 手動で実行
 
 permissions:
   contents: write
