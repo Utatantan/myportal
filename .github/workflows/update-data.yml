@@ -30,7 +30,7 @@ jobs:
 
       - name: Process MPD files
         run: |
-          python .github/scripts/process_mpd.py
+          python .github/script/process_mpd.py
 
       - name: Create Issue on Failure
         if: failure()

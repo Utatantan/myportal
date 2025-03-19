@@ -89,14 +89,14 @@ def process_mpd_files():
                     items.append(data)
                     
                 except yaml.YAMLError as e:
-                    print(f"❌ YAML parsing error in {file_path}:\n{str(e)}", file=sys.stderr)
+                    print(f"YAML parsing error in {file_path}:\n{str(e)}", file=sys.stderr)
                     has_errors = True
                 except ValidationError as e:
-                    print(f"❌ {str(e)}", file=sys.stderr)
+                    print(f"{str(e)}", file=sys.stderr)
                     has_errors = True
                     
         except Exception as e:
-            print(f"❌ Unexpected error processing {file_path}:\n{str(e)}", file=sys.stderr)
+            print(f"Unexpected error processing {file_path}:\n{str(e)}", file=sys.stderr)
             has_errors = True
     
     if has_errors:
@@ -113,7 +113,7 @@ def process_mpd_files():
     with open('data/items.json', 'w', encoding='utf-8') as f:
         json.dump({'items': items}, f, ensure_ascii=False, indent=2)
     
-    print(f"✅ Successfully processed {len(items)} items and saved to data/items.json")
+    print(f"Successfully processed {len(items)} items and saved to data/items.json")
 
 if __name__ == "__main__":
     process_mpd_files()
